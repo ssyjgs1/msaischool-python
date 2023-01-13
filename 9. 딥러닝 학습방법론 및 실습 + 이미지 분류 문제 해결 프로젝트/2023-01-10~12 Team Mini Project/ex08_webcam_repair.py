@@ -1,114 +1,106 @@
-import numpy as np
-import torch
-import torch.nn
-import torchvision
-from torch.autograd import Variable
-from torchvision import transforms
-import PIL
 import cv2
+import torch
 import torchvision.models as models
 import torch.nn as nn
-# import rexnetv1
+import albumentations as A
+import torch.nn.functional as F
+from albumentations.pytorch.transforms import ToTensorV2
+from PIL import Image
+import numpy as np
+from torchvision import transforms
+import time
+import math
+from func import *
+
+#### 경고문, threshold ###
+warning_text = '[[ Warning ]]'
+threshold_num = 95
 
 
-# This is the Label
-Labels = {0 : "bird" , 1 : "drone"}
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+labels = {0:"bird" , 1:"drone"}
 
-# Let's preprocess the inputted frame
-
-data_transforms = transforms.Compose(
-    [
+data_transforms = transforms.Compose([ 
         transforms.Resize((224,224)),
-        transforms.RandomHorizontalFlip(),
+        transforms.CenterCrop(200),
         transforms.ToTensor(),
         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
-    ]
-)
-device = torch.device("cpu")  ##Assigning the Device which will do the calculation
-
-
-# model = rexnetv1.ReXNetV1()
-# model.output[1] = nn.Conv2d(1280, 3, kernel_size=1, stride=1)
-# model.load_state_dict(torch.load("2nd.pt",map_location=device))
-# model = model.to(device)  # set where to run the model and matrix calculation
-# model.eval()  # set the device to eval() mode for testing
-
-model = models.vgg16(pretrained=False)
-model.classifier[6] = nn.Linear(in_features=4096, out_features=2)
-model.load_state_dict(torch.load("best0.pt",map_location=device))
+])
+######## 모델 수정#########
+model = models.mobilenet_v2(pretrained=False)
+model.classifier[1] = nn.Linear(in_features=1280, out_features=2)
+model.load_state_dict(torch.load("12nd.pt",map_location=device)) # cuda에서 cpu로 넘겨주기 위해 map_location사용. cuda 대 cuda일 경우 생략.
 model = model.to(device)
 model.eval()
 
 
-# Set the Webcam
-def Webcam_720p():
-    cap.set(3, 1280)
-    cap.set(4, 720)
+cap = cv2.VideoCapture(0)
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 850)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 850)
+
+# fps값 추출
+fps = cap.get(cv2.CAP_PROP_FPS)
+print("현재 fps :", fps)
+
+# 화면에 출력될 fps
+fps_monitor = f'{int(fps)} FPS'
+
+if cap.isOpened():
+  while True:
+    _, frame = cap.read()
+    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    pil_img = Image.fromarray(frame)# fromarray : NumPy 배열을 Image 객체로 바꿀 때
+    input_img = data_transforms(pil_img).reshape([1,3,200,200]).to(device)# reshaep([이미지수,채널수,height,width])
+    out = model(input_img)
+    softmax_result = F.softmax(out)
+    top1_prob, top1_label = torch.topk(softmax_result, 1)
+
+    # CCTV에 정확도(%) 표시 
+    acc = str(round(top1_prob.item()*100, 3)) + "%"
+    
+    # thresholed를 위한 정확도
+    acc_num = (round(top1_prob.item()*100, 3))
+    
+    # thresholed를 위한 레이블 이름
+    object_label = labels.get(int(top1_label))
+
+    # threshold를 넘는 경우에만 물체를 분류
+    if acc_num > threshold_num :
 
 
-def argmax(prediction):
-    prediction = prediction.cpu()
-    prediction = prediction.detach().numpy()
-    top_1 = np.argmax(prediction, axis=1)
-    score = np.amax(prediction)
-    score = '{:6f}'.format(score)
-    prediction = top_1[0]
-    result = Labels[prediction]
+        # threshold를 넘으며 레이블이 '드론'일 경우
+        if object_label == 'drone':
+            # 화면에 경고문 출력
+            cv2.putText(frame, warning_text, (150, 200), cv2.FONT_HERSHEY_DUPLEX, 2, (255, 0, 0),3)
+            print("Drone Appears!!!!")
+            # 화면에 레이블 출력
+            cv2.putText(frame, labels.get(int(top1_label)), (10, 400), cv2.FONT_HERSHEY_DUPLEX, 2, (255, 255, 255), 1)
+            # 화면에 예측 확률 출력
+            cv2.putText(frame, acc, (10, 450), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255 ,255 ), 1)
+            print(acc, labels.get(int(top1_label)))
+            send_alarm()
 
-    return result, score
+        # threshold를 넘으며 레이블이 드론이 아니고 '새'일 경우
+        elif object_label =='bird' :
+            # 화면에 레이블 출력
+            cv2.putText(frame, labels.get(int(top1_label)), (10, 400), cv2.FONT_HERSHEY_DUPLEX, 2, (255, 255, 255), 1)
+            # 화면에 레이블 출력
+            cv2.putText(frame, acc, (10, 450), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255 ,255 ), 1)
+            print(acc, labels.get(int(top1_label)))
+    
+    # threshold 넘지못하면 ...으로 분류
+    else: # 아무일도 없었다.
+        cv2.putText(frame, '...', (150, 200), cv2.FONT_HERSHEY_DUPLEX, 1, (0, 0, 0),3)
 
-
-def preprocess(image):
-    image = PIL.Image.fromarray(image)  # Webcam frames are numpy array format
-    # Therefore transform back to PIL image
-    print(image)
-    image = data_transforms(image)
-    image = image.float()
-    # image = Variable(image, requires_autograd=True)
-    image = image.cpu()
-    image = image.unsqueeze(0)  # I don't know for sure but Resnet-50 model seems to only
-    # accpets 4-D Vector Tensor so we need to squeeze another
-    return image  # dimension out of our 3-D vector Tensor
-
-
-# Let's start the real-time classification process!
-
-cap = cv2.VideoCapture(0,cv2.CAP_DSHOW)  # Set the webcam
-Webcam_720p()
-
-fps = 0
-show_score = 0
-show_res = 'Nothing'
-sequence = 0
-
-while True:
-    ret, frame = cap.read()  # Capture each frame
-
-    if fps == 4:
-        image = frame[100:450, 150:570]
-        image_data = preprocess(image)
-        #print(image_data)
-        prediction = model(image_data)
-        print(prediction)
-        result, score= argmax(prediction)
-        score=float(score)
-        #print(type(score))
-        fps = 0
-        if score >= 0.5 :
-            show_res = result
-            show_score = score
-        else:
-            show_res = "Nothing"
-            show_score = score
-
-    fps += 1
-    cv2.putText(frame, '%s' % (show_res), (950, 250), cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 255, 255), 3)
-    cv2.putText(frame, '(score = %.5f)' % (show_score), (950, 300), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
-    cv2.rectangle(frame, (400, 150), (900, 550), (250, 0, 0), 2)
-    cv2.imshow("ASL SIGN DETECTER", frame)
-
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    # 윈도우 창으로 출력하는 단
+    cv2.putText(frame, fps_monitor, (500, 30), cv2.FONT_HERSHEY_DUPLEX, 1, (0,0,0), 1)
+    cv2.imshow("Webcam CCTV", cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
+    # BGR -> RGB로 변환
+    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)    
+    if cv2.waitKey(25) ==27 : 
         break
+else:
+    print('영상 읽기 실패...')
 
-cap.release()
-cv2.destroyWindow("ASL SIGN DETECTER")
+cap.release() # 자원 반납
+cv2.destroyAllWindows() # 창 닫기
