@@ -8,7 +8,12 @@ from albumentations.pytorch.transforms import ToTensorV2
 from torch.utils.data import DataLoader
 from ex04_customdataset import CustomDataset
 from torchvision import models
-from ex05_main import model_try
+# from ex05_main import model_try
+from sklearn.metrics import confusion_matrix
+import numpy as np
+import seaborn as sn
+import pandas as pd
+import matplotlib.pyplot as plt
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 def test_main():
@@ -44,6 +49,8 @@ def test(model, data_loader, device) :
     model.eval()
     correct = 0
     total = 0
+    y_pred, y_true = [], []
+    test_data_path = "./dataset/test"
     with torch.no_grad():
         for i, (image, label, path) in enumerate(data_loader) :
             images, labels = image.to(device), label.to(device)
@@ -51,8 +58,24 @@ def test(model, data_loader, device) :
             _, argmax = torch.max(output, 1)
             total += images.size(0)
             correct += (labels == argmax).sum().item()
+
+            argmax = argmax.data.cpu().numpy()  # gpu에 할당된 tensor를 cpu 텐서로 변환
+            labels = labels.data.cpu().numpy()  # gpu에 할당된 tensor를 cpu 텐서로 변환
+
+            y_pred.extend(argmax) # Save Prediction
+            y_true.extend(labels) # Save True
+
         acc = acc_function(correct, total)
-        print(f"acc >> {acc}%" )
+        print(f"Model Accuracy: {acc}%" )      
+
+    # Build confusion matrix
+    classes = ('20F', '20M', '30F', '30M', '40F', '40M')
+    cf_matrix = confusion_matrix(y_true, y_pred)
+    df_cm = pd.DataFrame(cf_matrix/np.sum(cf_matrix) * len(os.listdir(test_data_path)), 
+                    index = [i for i in classes], columns = [i for i in classes])
+    plt.figure(figsize = (12,7))
+    sn.heatmap(df_cm, annot=True)
+    plt.savefig('./experiment_result/confunsion_matrix.png')
 
 def test_show(test_loader, device) :
     model = models.__dict__["vgg16"](pretrained=False)
@@ -65,10 +88,13 @@ def test_show(test_loader, device) :
 
     correct = 0
     total = 0
+    print('\n============================ Test Show ============================')
+
     model.eval()
     with torch.no_grad() :
         for i, (imgs, labels, path) in enumerate(test_loader) :
-            inputs, outputs, paths = imgs.to(device), labels.to(device), path      
+            inputs, outputs, paths = imgs.to(device), labels.to(device), path   
+
             predicted_outputs = model(inputs)            
             _, predicted = torch.max(predicted_outputs, 1) # 제일 확률 높은 답안지 내놔라
 
@@ -81,19 +107,17 @@ def test_show(test_loader, device) :
             predicted_label = label_dict[str(labels_pr_temp)]
             answer_label = label_dict[str(labels_temp)]
         
-            img = cv2.imread(paths[0])
             if(answer_label != predicted_label):  # label과 predicted output이 다를 경우멘 사진출력
-                print('Name of Label\t:', paths[0].split('\\')[1])
-                print('Name of Image\t:', paths[0].split('\\')[2])
                 print("Answer Label\t:" , answer_label)
                 print("Predicted Label\t:", predicted_label)
+                print('Name of Image\t:', paths[0].split('\\')[2], '\n')
+
+                img = cv2.imread(paths[0])
                 cv2.putText(img, predicted_label, (10, 20), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,0), 2) # 예상 답안 : 초록색
                 cv2.putText(img, answer_label, (10, 50), cv2.FONT_HERSHEY_PLAIN, 1, (0,0,255), 2)    # 실제 답안 : 빨간색
                 cv2.imshow("test", img)
                 cv2.waitKey(0)
 
-        # acc = acc_function(correct, total)
-        # print(f"model accuracy >> {acc}%" )
 
 def folder_name_det(folder_path) :
     folder_name = glob.glob(os.path.join(folder_path,"*"))
@@ -102,7 +126,29 @@ def folder_name_det(folder_path) :
         temp_name = path.split("\\")
         temp_name = temp_name[1]
         det[str(index)] = temp_name
-    return det          
+    return det        
+
+def draw_confunsion(test_loader, model):
+    print("Drawing Confusion Matrix...")
+    y_pred, y_true = [], []
+
+    for imgs, labels, path in test_loader:
+        inputs, outputs, paths = imgs.to(device), labels.to(device), path  
+
+        predicted_outputs = model(inputs)            
+        _, predicted = torch.max(predicted_outputs, 1) # 제일 확률 높은 답안지 내놔라
+        y_pred.extend(predicted) # Save Prediction
+        labels = labels.data.cpu().numpy()
+        y_true.extend(labels) # Save True
+
+    classes = ('20F', '20M', '30F', '30M', '40F', '40M')
+
+    # Build confusion matrix
+    cf_matrix = confusion_matrix(y_true, y_pred)
+    df_cm = pd.DataFrame(cf_matrix/np.sum(cf_matrix) *10, index = [i for i in classes], columns = [i for i in classes])
+    plt.figure(figsize = (12,7))
+    sn.heatmap(df_cm, annot=True)
+    plt.savefig('./experiment result/output.png')
 
 if __name__ == '__main__':
     test_main()
