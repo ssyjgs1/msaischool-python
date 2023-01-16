@@ -12,12 +12,13 @@ import pandas as pd
 from tqdm import tqdm
 from torchvision import models
 from timm.loss import LabelSmoothingCrossEntropy
+from torch.optim.lr_scheduler import LambdaLR 
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # pt_파일명 설정
-model_try = 2
-model_names = 'vgg16'
+model_try = 2 # 실험 회차
+model_names = 'vgg16' # resnet50 등
 
 # 하이퍼 파라미터 설정
 EPOCHS = 100
@@ -58,7 +59,7 @@ def main():
     train_loader = DataLoader(train_dataset, batch_size= BATCH_SIZE, shuffle= True , num_workers= 2, pin_memory= True)
     valid_loader = DataLoader(valid_dataset, batch_size= BATCH_SIZE, shuffle= False, num_workers= 2, pin_memory= True)
 
-    ## visual augmentation
+    ## visual augmentation # augmentation visualization
     def visualize_augmentation(dataset, idx = 0, cols= 5):
         dataset = copy.deepcopy(dataset)
         samples = 5
@@ -75,15 +76,9 @@ def main():
         
         plt.tight_layout()
         plt.show()
+    # for i in range(7):
+    #     visualize_augmentation(train_dataset)
 
-    # visualize_augmentation(train_dataset)
-    # visualize_augmentation(train_dataset)
-    # visualize_augmentation(train_dataset)
-    # visualize_augmentation(train_dataset)
-    # visualize_augmentation(train_dataset)
-    # visualize_augmentation(train_dataset)
-    # visualize_augmentation(valid_dataset)
-    # visualize_augmentation(test_dataset)
     
     ### 3. model build
 
@@ -128,6 +123,7 @@ def main():
     for index, model in enumerate(model_list):
         optimizer = torch.optim.AdamW(model.parameters(), lr= LEARNING_RATE)
         # optimizer = torch.optim.Adam(model.parameters(), lr= LEARNING_RATE)
+        scheduler = LambdaLR(optimizer=optimizer, lr_lambda=lambda epoch: 0.95 ** epoch, last_epoch=-1, verbose=False)
 
         save_path = f'./experiment result/best_{model_try}.pt'
         dfForAccuracy = pd.DataFrame(index=list(range(epochs)),
@@ -156,7 +152,8 @@ def main():
                 optimizer.step()
                 runing_loss += loss.item()
                 train_bar.desc = f"train epoch[{epoch+1} / {epoch}], loss{loss.data:.3f}"
-
+            scheduler.step()
+            
             model.eval()
             with torch.no_grad() :
                 valid_bar = tqdm(valid_loader, file=sys.stdout, colour='red')
