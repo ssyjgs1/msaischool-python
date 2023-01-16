@@ -10,23 +10,15 @@ def split_data(data_path):
         
         train_set, val_set = train_test_split(images , test_size= 0.1, random_state= 777)
         # val_set, test_set  = train_test_split(val_set, test_size= 0.5, random_state= 777)
-
-        print("\n-------" ,total_path, "-------")
-        print("No. of Total Image: ", len(images))
-        print("No. of Train Image: ", len(train_set))
-        print("No. of Val Image: "  , len(val_set))
-        # print("No. of Test Image: " , len(test_set))
         
         save_in_folder(train_set, mode = "train")
         save_in_folder(val_set  , mode = "val")
         # save_in_folder(test_set , mode = "test")
 
-
 def save_in_folder(data, mode):
     for path in data:
         new_path = path.replace("resize_data", f"dataset\{mode}")
         os.makedirs(os.path.dirname(new_path), exist_ok=True) 
-   
         try:
             image = cv2.imread(path)
             cv2.imwrite(new_path, image)
