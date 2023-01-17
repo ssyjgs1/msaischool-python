@@ -89,7 +89,7 @@ def get_location():
 #04. csv파일을 읽어서 이용자의 이메일을 return하는 함수
 def get_customer():
     data = []
-    customer_data = './0111/customer_email.csv' # *** 파일 주소는 필요시 변경해주세요!! ***
+    customer_data = './customer_email.csv' # *** 파일 주소는 필요시 변경해주세요!! ***
     f = open(customer_data,'r',encoding='utf-8')
     rdr = csv.reader(f)
     
