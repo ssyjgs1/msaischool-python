@@ -26,7 +26,7 @@ data_transforms = transforms.Compose([
 ######## 모델 수정#########
 model = models.mobilenet_v2(pretrained=False)
 model.classifier[1] = nn.Linear(in_features=1280, out_features=2)
-model.load_state_dict(torch.load("./0111/12nd.pt",map_location=device))
+model.load_state_dict(torch.load("./12nd.pt",map_location=device))
 model = model.to(device)
 model.eval()
 
