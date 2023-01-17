@@ -1,3 +1,4 @@
+"""본 스크립트는 ex06_webcam.py가 수정됨에 따라 더 이상 사용하지 않음"""
 import cv2
 import torch
 import torchvision.models as models
