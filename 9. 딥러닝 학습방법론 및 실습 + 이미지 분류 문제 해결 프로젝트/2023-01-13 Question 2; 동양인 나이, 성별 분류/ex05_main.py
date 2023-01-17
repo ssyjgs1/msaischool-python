@@ -28,8 +28,29 @@ LOSS_FUNCTION = LabelSmoothingCrossEntropy()
 HALF_PERCENT = 0.5
 
 ######################
-def main(): 
+def main():    
     ### 0. Augmentation (train & valid)
+    # train_aug = A.Compose([
+    #     # 100퍼(val도 동일 적용)
+    #     A.RandomCrop(width= 200, height= 200),
+    #     # 50퍼
+    #     A.RandomRotate90(p=HALF_PERCENT),
+    #     A.VerticalFlip(p=HALF_PERCENT),
+    #     A.HorizontalFlip(p=HALF_PERCENT),
+    #     A.RandomBrightness(limit=0.2, p=HALF_PERCENT),
+    #     A.OneOf([
+    #         A.RGBShift(r_shift_limit=10, g_shift_limit=10, b_shift_limit=10, p = HALF_PERCENT),
+    #         A.ColorJitter(brightness= 0.2, contrast= 0.2, saturation= 0.2, hue= 0.2, p = HALF_PERCENT)
+    #     ], p = 1),
+    #     A.OneOf([
+    #         A.Equalize(always_apply= False, p= HALF_PERCENT, mode='cv', by_channels= False),
+    #         A.GaussNoise(always_apply= False, p = HALF_PERCENT, var_limit= (0.0, 26.849998474121094)),
+    #     ], p = 1),
+    #     # 30퍼(예시에 p값을 0.3주는게 많아서 0.3으로 설정)
+    #     A.ShiftScaleRotate(shift_limit= 0.05, scale_limit= 0.06, rotate_limit=20, p= 0.3),
+    #     A.Normalize(mean=(0.485, 0.456, 0.406), std= (0.229, 0.224, 0.225)),
+    #     ToTensorV2()
+    # ])
     train_aug = A.Compose([
         # 100퍼(val도 동일 적용)
         A.RandomCrop(width= 200, height= 200),
@@ -78,7 +99,6 @@ def main():
         plt.show()
     # for i in range(7):
     #     visualize_augmentation(train_dataset)
-
     
     ### 3. model build
 
@@ -113,18 +133,13 @@ def main():
     #### 4 epoch, optim loss
     epochs = EPOCHS
     loss_function = LOSS_FUNCTION
-
     best_val_acc = 0.0
-
     train_steps = len(train_loader)
-    valid_steps = len(valid_loader)
 
     ############ 수정하기 ####
     for index, model in enumerate(model_list):
         optimizer = torch.optim.AdamW(model.parameters(), lr= LEARNING_RATE)
-        # optimizer = torch.optim.Adam(model.parameters(), lr= LEARNING_RATE)
         scheduler = LambdaLR(optimizer=optimizer, lr_lambda=lambda epoch: 0.95 ** epoch, last_epoch=-1, verbose=False)
-
         save_path = f'./experiment result/best_{model_try}.pt'
         dfForAccuracy = pd.DataFrame(index=list(range(epochs)),
                                     columns=['Epoch', 'Accuracy', 'Loss'])
@@ -153,7 +168,7 @@ def main():
                 runing_loss += loss.item()
                 train_bar.desc = f"train epoch[{epoch+1} / {epoch}], loss{loss.data:.3f}"
             scheduler.step()
-            
+
             model.eval()
             with torch.no_grad() :
                 valid_bar = tqdm(valid_loader, file=sys.stdout, colour='red')
@@ -167,13 +182,14 @@ def main():
             train_accuracy = train_acc / len(train_dataset)
 
             print(f"epoch [{epoch+1}/{epochs}]"
-                f" train loss : {(runing_loss / train_steps):.3f} "
-                f"train_acc : {train_accuracy:.3f} val_acc : {val_accuracy:.3f}"
+                f", train loss : {(runing_loss / train_steps):.3f} "
+                f", train_acc : {train_accuracy:.3f} val_acc : {val_accuracy:.3f}"
+                f", lr: {scheduler.get_last_lr()}"
             )
 
             dfForAccuracy.loc[epoch, 'Epoch']    = epoch + 1
-            dfForAccuracy.loc[epoch, 'Accuracy'] = round(train_accuracy, 4) * 100
-            dfForAccuracy.loc[epoch, 'Loss']     = round( (runing_loss / train_steps), 4)
+            dfForAccuracy.loc[epoch, 'Accuracy'] = round(val_accuracy, 4) * 100
+            dfForAccuracy.loc[epoch, 'Loss']     = round((runing_loss / train_steps), 4)
             
             if val_accuracy > best_val_acc :
                 best_val_acc = val_accuracy
