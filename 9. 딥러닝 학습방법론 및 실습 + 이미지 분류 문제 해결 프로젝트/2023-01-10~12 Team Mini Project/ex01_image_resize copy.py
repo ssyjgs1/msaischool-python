@@ -33,7 +33,8 @@ for item_path in image_list:
         # newfile_path = newfile_path.replace(".JPG", ".png")
         
         image = Image.open(item_path)
-        new_image = expand2square(image, (0,0,0))      # 정사각형화, 뒷배경 검은색
+        # new_image = expand2square(image, (204,255,255)) # 정사각형화, 뒷배경 하늘색
+        new_image = expand2square(image, (0,0,0)) # 정사각형화, 뒷배경 검은색
         new_image = new_image.resize((224,224))
         new_image.save(newfile_path)
     except Exception as e:    
