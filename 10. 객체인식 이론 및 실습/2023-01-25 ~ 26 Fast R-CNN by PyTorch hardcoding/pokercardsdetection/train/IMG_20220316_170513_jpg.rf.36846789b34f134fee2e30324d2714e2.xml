@@ -1,0 +1,66 @@
+<annotation>
+	<folder></folder>
+	<filename>IMG_20220316_170513_jpg.rf.36846789b34f134fee2e30324d2714e2.jpg</filename>
+	<path>IMG_20220316_170513_jpg.rf.36846789b34f134fee2e30324d2714e2.jpg</path>
+	<source>
+		<database>roboflow.ai</database>
+	</source>
+	<size>
+		<width>960</width>
+		<height>720</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>A Trefoils</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<occluded>0</occluded>
+		<bndbox>
+			<xmin>22</xmin>
+			<xmax>360</xmax>
+			<ymin>75</ymin>
+			<ymax>556</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>2 Spades</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<occluded>0</occluded>
+		<bndbox>
+			<xmin>357</xmin>
+			<xmax>590</xmax>
+			<ymin>137</ymin>
+			<ymax>528</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>3 Spades</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<occluded>0</occluded>
+		<bndbox>
+			<xmin>581</xmin>
+			<xmax>766</xmax>
+			<ymin>178</ymin>
+			<ymax>507</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>4 Spades</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<occluded>0</occluded>
+		<bndbox>
+			<xmin>752</xmin>
+			<xmax>916</xmax>
+			<ymin>214</ymin>
+			<ymax>504</ymax>
+		</bndbox>
+	</object>
+</annotation>

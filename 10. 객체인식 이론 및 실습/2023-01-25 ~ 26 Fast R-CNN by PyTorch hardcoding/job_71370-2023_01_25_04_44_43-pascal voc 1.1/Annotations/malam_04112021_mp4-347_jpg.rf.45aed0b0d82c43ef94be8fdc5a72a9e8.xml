@@ -1,0 +1,33 @@
+<annotation>
+  <folder>malam</folder>
+  <filename>malam_04112021_mp4-347_jpg.rf.45aed0b0d82c43ef94be8fdc5a72a9e8.jpg</filename>
+  <source>
+    <database>Unknown</database>
+    <annotation>Unknown</annotation>
+    <image>Unknown</image>
+  </source>
+  <size>
+    <width>640</width>
+    <height>480</height>
+    <depth></depth>
+  </size>
+  <segmented>0</segmented>
+  <object>
+    <name>car</name>
+    <truncated>0</truncated>
+    <occluded>0</occluded>
+    <difficult>0</difficult>
+    <bndbox>
+      <xmin>323.08</xmin>
+      <ymin>241.86</ymin>
+      <xmax>359.37</xmax>
+      <ymax>279.3</ymax>
+    </bndbox>
+    <attributes>
+      <attribute>
+        <name>rotation</name>
+        <value>0.0</value>
+      </attribute>
+    </attributes>
+  </object>
+</annotation>

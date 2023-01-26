@@ -1,0 +1,66 @@
+<annotation>
+	<folder></folder>
+	<filename>IMG_20220316_164107_jpg.rf.7759695d86d9a06fdee3dce1b633fc70.jpg</filename>
+	<path>IMG_20220316_164107_jpg.rf.7759695d86d9a06fdee3dce1b633fc70.jpg</path>
+	<source>
+		<database>roboflow.ai</database>
+	</source>
+	<size>
+		<width>960</width>
+		<height>720</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>4 Trefoils</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<occluded>0</occluded>
+		<bndbox>
+			<xmin>367</xmin>
+			<xmax>715</xmax>
+			<ymin>529</ymin>
+			<ymax>721</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>6 Diamonds</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<occluded>0</occluded>
+		<bndbox>
+			<xmin>401</xmin>
+			<xmax>931</xmax>
+			<ymin>273</ymin>
+			<ymax>673</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>7 Diamonds</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<occluded>0</occluded>
+		<bndbox>
+			<xmin>188</xmin>
+			<xmax>477</xmax>
+			<ymin>251</ymin>
+			<ymax>656</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>8 Diamonds</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<occluded>0</occluded>
+		<bndbox>
+			<xmin>20</xmin>
+			<xmax>498</xmax>
+			<ymin>87</ymin>
+			<ymax>406</ymax>
+		</bndbox>
+	</object>
+</annotation>

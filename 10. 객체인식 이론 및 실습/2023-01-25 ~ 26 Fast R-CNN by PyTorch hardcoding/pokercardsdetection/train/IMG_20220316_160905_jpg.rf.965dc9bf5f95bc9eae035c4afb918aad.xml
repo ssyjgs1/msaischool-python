@@ -1,0 +1,66 @@
+<annotation>
+	<folder></folder>
+	<filename>IMG_20220316_160905_jpg.rf.965dc9bf5f95bc9eae035c4afb918aad.jpg</filename>
+	<path>IMG_20220316_160905_jpg.rf.965dc9bf5f95bc9eae035c4afb918aad.jpg</path>
+	<source>
+		<database>roboflow.ai</database>
+	</source>
+	<size>
+		<width>960</width>
+		<height>720</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>5 Diamonds</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<occluded>0</occluded>
+		<bndbox>
+			<xmin>268</xmin>
+			<xmax>509</xmax>
+			<ymin>203</ymin>
+			<ymax>518</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>6 Hearts</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<occluded>0</occluded>
+		<bndbox>
+			<xmin>730</xmin>
+			<xmax>953</xmax>
+			<ymin>207</ymin>
+			<ymax>510</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>7 Hearts</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<occluded>0</occluded>
+		<bndbox>
+			<xmin>482</xmin>
+			<xmax>721</xmax>
+			<ymin>187</ymin>
+			<ymax>507</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>8 Hearts</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<occluded>0</occluded>
+		<bndbox>
+			<xmin>53</xmin>
+			<xmax>273</xmax>
+			<ymin>214</ymin>
+			<ymax>518</ymax>
+		</bndbox>
+	</object>
+</annotation>

@@ -1,0 +1,14 @@
+# label:color_rgb:parts:actions
+background:0,0,0::
+big bus:128,0,0::
+big truck:0,128,0::
+bus-l-:128,128,0::
+bus-s-:0,0,128::
+car:128,0,128::
+mid truck:0,128,128::
+small bus:128,128,128::
+small truck:64,0,0::
+truck-l-:192,0,0::
+truck-m-:64,128,0::
+truck-s-:192,128,0::
+truck-xl-:64,0,128::

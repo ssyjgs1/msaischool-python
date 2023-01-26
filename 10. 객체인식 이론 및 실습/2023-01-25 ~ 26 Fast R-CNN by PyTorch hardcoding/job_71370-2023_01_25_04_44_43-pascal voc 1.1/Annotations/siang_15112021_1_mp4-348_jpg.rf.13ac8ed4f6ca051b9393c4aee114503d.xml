@@ -1,0 +1,33 @@
+<annotation>
+  <folder>siang</folder>
+  <filename>siang_15112021_1_mp4-348_jpg.rf.13ac8ed4f6ca051b9393c4aee114503d.jpg</filename>
+  <source>
+    <database>Unknown</database>
+    <annotation>Unknown</annotation>
+    <image>Unknown</image>
+  </source>
+  <size>
+    <width>640</width>
+    <height>480</height>
+    <depth></depth>
+  </size>
+  <segmented>0</segmented>
+  <object>
+    <name>car</name>
+    <truncated>0</truncated>
+    <occluded>0</occluded>
+    <difficult>0</difficult>
+    <bndbox>
+      <xmin>207.7</xmin>
+      <ymin>253.99</ymin>
+      <xmax>249.92</xmax>
+      <ymax>295.37</ymax>
+    </bndbox>
+    <attributes>
+      <attribute>
+        <name>rotation</name>
+        <value>0.0</value>
+      </attribute>
+    </attributes>
+  </object>
+</annotation>
