@@ -1,0 +1,27 @@
+<annotation>
+	<folder></folder>
+	<filename>205_jpg.rf.ef25857a33d6bdb5aeeb71a50598cdd4.jpg</filename>
+	<path>205_jpg.rf.ef25857a33d6bdb5aeeb71a50598cdd4.jpg</path>
+	<source>
+		<database>roboflow.ai</database>
+	</source>
+	<size>
+		<width>250</width>
+		<height>177</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>racoon</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<occluded>0</occluded>
+		<bndbox>
+			<xmin>15</xmin>
+			<xmax>117</xmax>
+			<ymin>3</ymin>
+			<ymax>110</ymax>
+		</bndbox>
+	</object>
+</annotation>

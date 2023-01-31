@@ -1,0 +1,27 @@
+<annotation>
+	<folder></folder>
+	<filename>900_jpg.rf.d95a06dce939956c155a0c96b901562e.jpg</filename>
+	<path>900_jpg.rf.d95a06dce939956c155a0c96b901562e.jpg</path>
+	<source>
+		<database>roboflow.ai</database>
+	</source>
+	<size>
+		<width>205</width>
+		<height>155</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>goat</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<occluded>0</occluded>
+		<bndbox>
+			<xmin>1</xmin>
+			<xmax>176</xmax>
+			<ymin>6</ymin>
+			<ymax>156</ymax>
+		</bndbox>
+	</object>
+</annotation>

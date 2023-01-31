@@ -1,0 +1,27 @@
+<annotation>
+	<folder></folder>
+	<filename>166_jpg.rf.cbba2602ece569ac043ab26342454a11.jpg</filename>
+	<path>166_jpg.rf.cbba2602ece569ac043ab26342454a11.jpg</path>
+	<source>
+		<database>roboflow.ai</database>
+	</source>
+	<size>
+		<width>299</width>
+		<height>166</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>skunk</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<occluded>0</occluded>
+		<bndbox>
+			<xmin>12</xmin>
+			<xmax>298</xmax>
+			<ymin>1</ymin>
+			<ymax>166</ymax>
+		</bndbox>
+	</object>
+</annotation>

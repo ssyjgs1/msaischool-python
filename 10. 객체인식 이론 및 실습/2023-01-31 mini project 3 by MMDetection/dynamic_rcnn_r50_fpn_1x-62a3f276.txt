@@ -1,0 +1,2 @@
+모델의 크기가 100MB가 넘어 Git LFS에 제한이 있어 모델의 pth 파일 다운로드 주소를 남김
+https://download.openmmlab.com/mmdetection/v2.0/dynamic_rcnn/dynamic_rcnn_r50_fpn_1x/dynamic_rcnn_r50_fpn_1x-62a3f276.pth
