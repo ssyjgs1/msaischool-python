@@ -11,8 +11,8 @@ RESIZE_LIMIT = 960
 small_img_list, small_size_paths = [], []
 
 # 경로 변경 필요
-root_path = f"C:/Users/user/Downloads/2023-02-07 checked/airplane"
-new_root = f"C:/Users/user/Downloads/2023-02-07 checked/{LABEL_NAME}_preprocessed"
+root_path = f"C:/Users/user/Desktop/airplane image damdang/work-no-3"
+new_root = f"C:/Users/user/Desktop/airplane image damdang/work-no-3-code-processed"
 
 # 폴더 생성
 os.makedirs(new_root, exist_ok= True)
@@ -24,8 +24,12 @@ png_paths = glob.glob(os.path.join(root_path, '*.png'))
 jpeg_paths = glob.glob(os.path.join(root_path, '*.jpeg'))
 image_paths = jpg_paths + png_paths + jpeg_paths
 
+# 마지막 작업한 숫자(수정 필수임!)
+NUM = 2801
+
 # 모든 이미지 경로
 for index, image_path in enumerate(image_paths):
+    index = index + NUM
     
     img = cv2.imread(image_path, cv2.IMREAD_COLOR)
     img_name = image_path.split('\\')[-1]
