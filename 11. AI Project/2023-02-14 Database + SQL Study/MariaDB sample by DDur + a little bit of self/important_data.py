@@ -1,0 +1,6 @@
+USER     = "ㅁㅁㅁㅁ"
+PASSWORD = "ㅇㅇㅇㅇ"
+HOST     = "000.000.000.000"
+DATABASE = "drone_project"
+TABLE_CUSTOMER = "customer"
+TABLE_WEBCAM =  "webcam"
