@@ -1,19 +1,11 @@
 # Microsoft AI School Main Class
 
-- Python의 기본 문법과 실습을 진행하였습니다.
-- Microsoft Azure Cognitive Services를 이용한 Computer Vision, Face API, Custom Vision, OCR 등의 실습을 진행하였습니다.
-- Python에서 사용하는 수학 및 과학 연산, 데이터 분석, 데이터 시각화 등을 위해 Numpy, Pandas, matplotlib 등의 실습을 진행하였습니다.
-- Python에서 웹 상의 정보를 긁어오는 Crawling을 BeautifulSoup 패키지를 이용하여 실습하였습니다.
-- 오픈소스로 제공되는 Database 관리 도구인 MySQL을 실습하였습니다.
-- Data Processing(4가지로 데이터를 다루는 방법에 대해)실습을 진행하였습니다. 
-- 특강으로 AI를 사용한 이미지 생성을 colab에서 구동해보았습니다. 좋은 그래픽 카드를 갖고 싶습니다. :(
-- Orange Data Mininig을 이용하여 다양한 machine learning 모델들을 시각화하여 다양한 지표 산출을 실습하였습니다.
-- AI의 classic machine learning의 일환으로 Scikit Learn, k-NN Algorithm을 실습하였습니다.
-- 지도학습(supervised learning)의 두 갈래인 regression(linear regression, decision tree regressor, support vector machine regressor, multi layer perceptron regressor), classification(logistic regression, support vector machine, decision tree, random forest)을 실습하였습니다.
-- 비지도학습(unsupervised learning)을 k-Means Algorithm(+MinMaxScaler, PCA[차원 축소], Hierarchical Clustering, Dendrogram, Silhouette 등의 방법, 도구를 사용하여 실습하였습니다.
-- Tensor, scala, vector에 대한 연산, 전치행렬에 대한 실습을 진행하였습니다.
-- 신경망의 기초 구조, 수학(+식), Deep Learning의 프레임워크 중 하나인 Keras의 기초 실습을 진행하였습니다.
-- Keras를 이용하여 이진 분류, 다중 분류, 회귀 등의 실습을 진행하였습니다.
-- CNN을 이용한 실습을 진행하였습니다.
-- Ubuntu 상에서의 Docker, Kubernetes(Minikube)의 실습을 진행하였습니다.
-- Azure Machine Learning Studio 환경에서 데이터셋을 주고 학습시킨 뒤 최적화된 모델을 생성 및 배포하는 실습을 진행하였습니다.
+## Basic Information and Schedule
+- Microsoft AI School은 Microsoft와 고용노동부가 함께 하여 제공하는 AI 개발자 양성 과정입니다. 저는 1기 교육생으로 입과하였고, 현재 5개월간의 교육 후, 팀 단위 프로젝트를 진행하고 있습니다.
+- 기간 : 2022년 9월 30일 ~ 2023년 3월 22일
+- 교육 과정 : https://msaischool.kr/course(공식 누리집에선 그렇게 자세하게 기재되어 있지는 않음)
+    - Front-End, Python(+PyTorch 등)을 이용한 Image Dataset 대상 인공지능 및 기계학습 방법론과 실습으로 구성되어 있음(1기인 필자가 했던 과정 기준)
+    - LinkedIn, GitHub, Azure Cloud 등 다양한 도구
+    - Career Mentoring & Consult, Townhall Meeting 및 다양한 외부 연사 특강
+    - 팀 단위 프로젝트 진행(본인의 경우, 이미지 분류와 객체 인식의 2가지 팀 프로젝트 진행)
+- 추후 업데이트 예정....
