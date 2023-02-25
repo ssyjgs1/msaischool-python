@@ -44,14 +44,19 @@
 - Gather data by using web crawling(Selenium), build custom image dataset, read annotation file(xml, json) and processing to image bounding box, split data for train, validation and test.
 - PyTorch start! Build custom dataset class, use augmentation by Albumentation library, process image by keypoints.
 
-## 8. Theory and Practice of Artificial Neural Network + Convolutional Neural Network
+## 8. Artificial Neural Network + Convolutional Neural Network Theory and Practice
 - URL : https://github.com/ssyjgs1/MSAISchool-MainClass/tree/main/8.%20%EC%9D%B8%EA%B3%B5%EC%8B%A0%EA%B2%BD%EB%A7%9D%20%2B%20CNN%20%EC%9D%B4%EB%A1%A0%20%EB%B0%8F%20%EC%8B%A4%EC%8A%B5
 - Practice about CNN(Linear Regression, Logistic Regression, Perceptron, ResNet18, 50, RexNet, EfficientNet and various model for custom image dataset classification)
 
-## 9. Theory and Practice of Deep Learning and Project for Image Classification Problem
+## 9. Deep Learning and Project for Image Classification Problem Theory and Practice
 - URL : https://github.com/ssyjgs1/MSAISchool-MainClass/tree/main/9.%20%EB%94%A5%EB%9F%AC%EB%8B%9D%20%ED%95%99%EC%8A%B5%EB%B0%A9%EB%B2%95%EB%A1%A0%20%EB%B0%8F%20%EC%8B%A4%EC%8A%B5%20%2B%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EB%B6%84%EB%A5%98%20%EB%AC%B8%EC%A0%9C%20%ED%95%B4%EA%B2%B0%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8
 - Practice about Deep Learning and project for custom image dataset classification problem.
 - Rock-Scissor-Paper classify, butterflies, Birds vs Drone, Eastern Asian face classify by age and sex.
+
+## 10. Object Detection Theory and Practice
+- URL : https://github.com/ssyjgs1/MSAISchool-MainClass/tree/main/10.%20%EA%B0%9D%EC%B2%B4%EC%9D%B8%EC%8B%9D%20%EC%9D%B4%EB%A1%A0%20%EB%B0%8F%20%EC%8B%A4%EC%8A%B5
+- Practice about object detection for custom image and label dataset of object detection.
+- Fast R-CNN, YOLOv5, YOLOv7
 
 
 Update will be continued....
