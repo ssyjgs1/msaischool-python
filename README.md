@@ -56,7 +56,8 @@
 ## 10. Object Detection Theory and Practice
 - URL : https://github.com/ssyjgs1/MSAISchool-MainClass/tree/main/10.%20%EA%B0%9D%EC%B2%B4%EC%9D%B8%EC%8B%9D%20%EC%9D%B4%EB%A1%A0%20%EB%B0%8F%20%EC%8B%A4%EC%8A%B5
 - Practice about object detection for custom image and label dataset of object detection.
-- Fast R-CNN, YOLOv5, YOLOv7
+- Used various models like Fast R-CNN, YOLOv5, YOLOv7 and MMDetection.
+- Some of mini projects(Wine Labels Dataset, Animal Dataset, Park Illegal Object Detection)
 
 
 Update will be continued....
