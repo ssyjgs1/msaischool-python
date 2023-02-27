@@ -1,0 +1,13 @@
+# path : ./dataset/
+train : ./dataset/train/images
+val : ./dataset/train/images
+
+
+# Classes
+names:
+  0: drone
+  1: bird
+  2: airplane
+  3: helicopter
+  4: balloon
+  5: military drone
