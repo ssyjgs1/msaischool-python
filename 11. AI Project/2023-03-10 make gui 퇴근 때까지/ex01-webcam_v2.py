@@ -57,7 +57,7 @@ class Ui_MainWindow(QMainWindow, form_class):
         # link_color = dark_palette.link().color()
         # link_rgb = link_color.getRgb()
         # app.setPalette(qdarktheme.load_palette())
-
+        self.date = QDate.currentDate()
         self.setupUi(self)
         ''' 버튼 아이콘 '''
         # save
@@ -80,41 +80,44 @@ class Ui_MainWindow(QMainWindow, form_class):
         self.pushButton_cctv_on.clicked.connect(self.live_webcam_click_on)  # 동작
         self.pushButton_cctv_off.clicked.connect(self.live_webcam_click_off) # 종료 
 
-        '''Live Webcam 공간 부분'''
-        self.box_webcam = QtWidgets.QGroupBox(self.centralwidget)
-        self.box_webcam.setGeometry(QtCore.QRect(320, 30, 771, 491)) # 좌측 상단 X좌표, 좌측 상단 Y좌표, X로부터 우측으로의 거리, Y로부터 아래쪽으로의 거리
-        font = QtGui.QFont()
-        font.setFamily("Yu Gothic UI Semibold")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.box_webcam.setFont(font)
-        self.box_webcam.setObjectName("box_webcam")
+        # '''Live Webcam 공간 부분''' --> 무쓸모로 판명
+        # self.box_webcam = QtWidgets.QGroupBox(self.centralwidget)
+        # self.box_webcam.setGeometry(QtCore.QRect(320, 30, 771, 491)) # 좌측 상단 X좌표, 좌측 상단 Y좌표, X로부터 우측으로의 거리, Y로부터 아래쪽으로의 거리
+        # font = QtGui.QFont()
+        # font.setFamily("Yu Gothic UI Semibold")
+        # font.setPointSize(10)
+        # font.setBold(True)
+        # font.setWeight(75)
+        # self.box_webcam.setFont(font)
+        # self.box_webcam.setObjectName("box_webcam")
 
         ''' 실제 카메라 화면 출력 부분'''
         self.frame = QLabel(self.box_webcam)
-        self.frame.setGeometry(QtCore.QRect(10, 20, 761, 451))
+        self.frame.setGeometry(QtCore.QRect(10, 50, 761, 451))
         self.frame.setObjectName("frame")
-        self.camera = None
-        self.timer = QTimer()
-        self.frame_rate = 60
+        # self.camera = None # 필요 없음
+        # self.timer = QTimer() # 필요 없음
+        # self.frame_rate = 60 # 필요 없음
 
     '''on 버튼 눌렀을 시 웹캠 시작'''
     def live_webcam_click_on(self) :
-        cap = cv2.VideoCapture(0)
-        self.frame.show()
-        while True:
+        cap = cv2.VideoCapture(0) # 웹캠을 캡처하기 위한 객체 생성(0은 노트북에 달린 기본 카메라)
+        self.frame.show() # 위에서 실제 카메라 화면 출력 부분의 위젯을 보여줘!
+        while True: # 무한 루프로 프레임 읽어오기
             ret, img = cap.read()
             if not ret:
                 break
-            img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-            h, w, ch = img.shape
-            bytesPerLine = ch * w
-            qImg = QImage(img.data, w, h, bytesPerLine, QImage.Format_RGB888)
-            pixmap = QPixmap.fromImage(qImg)
-            self.frame.setPixmap(pixmap)
+            img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB) # BGR --> RGB 변환
+            h, w, ch = img.shape # ch는 이미지의 채널
+            bytesPerLine = ch * w # 이미지 가로 길이 X 채널 수 --> 이미지 데이터 한 줄의 바이트 수 계산(왜 필요한가 했더니 QImage에서 요구함)
+            qImg = QImage(img.data, w, h, bytesPerLine, QImage.Format_RGB888) # OpenCV로 갖고온 걸 PyQt에 쓰는 QImage(이미지 저장 및 표시를 위한 클래스) 객체로 변환
+            pixmap = QPixmap.fromImage(qImg) # QImage를 QPixmap(화면에 그리기 위한 클래스, 하드웨어 가속 사용함)으로 변환
+            self.frame.setPixmap(pixmap) # pixmap을 위젯에 표시
             QtWidgets.QApplication.processEvents()
-        cap.release()
+            # Qt 프로그램 이벤트 루프 먹이고 이벤트 처리하게 함 | UI 이벤트를 처리하게 한다고 함, 호출하지 않으면 웹캠에서 얻은 게 제대로 표시되지 않을 수도 있다고 함
+            # print(self.frame)
+        cap.release() # 카메라 자원 반환 + 다른 프로세스에서 카메라 사용 가능하게 함
+
 
 
 
@@ -377,5 +380,6 @@ if __name__ == '__main__':
 
     '''상태표시줄'''
     myWindow.statusBar()
-    myWindow.statusBar().showMessage("위험 비행물 감지 시스템 동작합니다.")
+    myWindow.statusBar().showMessage(myWindow.date.toString(Qt.DefaultLocaleLongDate)+"     [ 위험 비행물 감지 시스템 동작합니다 ]")
+    # myWindow.statusBar().showMessage("위험 비행물 감지 시스템 동작합니다.")
     app.exec_()

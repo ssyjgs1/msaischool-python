@@ -6,21 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1120</width>
-    <height>618</height>
+    <width>1111</width>
+    <height>653</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>위험비행물 탐지 시스템</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QGroupBox" name="box_cctv">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>30</y>
+      <y>20</y>
       <width>271</width>
-      <height>181</height>
+      <height>121</height>
      </rect>
     </property>
     <property name="font">
@@ -37,7 +37,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>20</y>
+       <y>50</y>
        <width>251</width>
        <height>51</height>
       </rect>
@@ -84,122 +84,14 @@
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="verticalLayoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>80</y>
-       <width>121</width>
-       <height>94</height>
-      </rect>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_drone">
-      <item>
-       <widget class="QCheckBox" name="checkBox_drone">
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI Semilight</family>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Drone</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="checkBox_airplane">
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI Semilight</family>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Airplane</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="checkBox_helicopter">
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI Semilight</family>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Helicopter</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QWidget" name="verticalLayoutWidget_2">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>80</y>
-       <width>121</width>
-       <height>94</height>
-      </rect>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_military">
-      <item>
-       <widget class="QCheckBox" name="checkBox_military">
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI Semilight</family>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Military Drone</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="checkBox_bird">
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI Semilight</family>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Bird</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="checkBox_balloon">
-        <property name="font">
-         <font>
-          <family>Yu Gothic UI Semilight</family>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Balloon</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
    </widget>
    <widget class="QGroupBox" name="box_webcam">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>30</y>
-      <width>771</width>
-      <height>491</height>
+      <x>310</x>
+      <y>20</y>
+      <width>781</width>
+      <height>521</height>
      </rect>
     </property>
     <property name="font">
@@ -218,9 +110,9 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>230</y>
+      <y>200</y>
       <width>271</width>
-      <height>80</height>
+      <height>121</height>
      </rect>
     </property>
     <property name="font">
@@ -237,7 +129,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>20</y>
+       <y>50</y>
        <width>251</width>
        <height>51</height>
       </rect>
@@ -291,9 +183,9 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>330</y>
+      <y>380</y>
       <width>271</width>
-      <height>80</height>
+      <height>121</height>
      </rect>
     </property>
     <property name="font">
@@ -310,7 +202,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>20</y>
+       <y>50</y>
        <width>251</width>
        <height>51</height>
       </rect>
@@ -364,7 +256,7 @@
     <property name="geometry">
      <rect>
       <x>320</x>
-      <y>530</y>
+      <y>550</y>
       <width>771</width>
       <height>41</height>
      </rect>
@@ -384,7 +276,7 @@
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>pics/capture.png</normaloff>pics/capture.png</iconset>
+         <normaloff>../../../../.designer/backup/pics/capture.png</normaloff>../../../../.designer/backup/pics/capture.png</iconset>
        </property>
       </widget>
      </item>
@@ -402,40 +294,7 @@
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>pics/save.png</normaloff>pics/save.png</iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="font">
-        <font>
-         <family>Yu Gothic UI Semibold</family>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Confidence Value</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QSlider" name="horizontalSlider">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_thres_value">
-       <property name="font">
-        <font>
-         <family>Yu Gothic UI</family>
-        </font>
-       </property>
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Value&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <normaloff>../../../../.designer/backup/pics/save.png</normaloff>../../../../.designer/backup/pics/save.png</iconset>
        </property>
       </widget>
      </item>
@@ -466,7 +325,7 @@
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>pics/exit.png</normaloff>pics/exit.png</iconset>
+         <normaloff>../../../../.designer/backup/pics/exit.png</normaloff>../../../../.designer/backup/pics/exit.png</iconset>
        </property>
       </widget>
      </item>
@@ -479,7 +338,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1120</width>
+     <width>1111</width>
      <height>26</height>
     </rect>
    </property>
@@ -506,7 +365,7 @@
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>pics/exit.png</normaloff>pics/exit.png</iconset>
+     <normaloff>../../../../.designer/backup/pics/exit.png</normaloff>../../../../.designer/backup/pics/exit.png</iconset>
    </property>
    <property name="text">
     <string>Exit</string>
@@ -518,7 +377,7 @@
   <action name="actionOpen">
    <property name="icon">
     <iconset>
-     <normaloff>pics/edit.png</normaloff>pics/edit.png</iconset>
+     <normaloff>../../../../.designer/backup/pics/edit.png</normaloff>../../../../.designer/backup/pics/edit.png</iconset>
    </property>
    <property name="text">
     <string>Open</string>
@@ -530,7 +389,7 @@
   <action name="actionSave">
    <property name="icon">
     <iconset>
-     <normaloff>pics/save.png</normaloff>pics/save.png</iconset>
+     <normaloff>../../../../.designer/backup/pics/save.png</normaloff>../../../../.designer/backup/pics/save.png</iconset>
    </property>
    <property name="text">
     <string>Save</string>
@@ -540,10 +399,6 @@
    </property>
   </action>
   <action name="actionPrint">
-   <property name="icon">
-    <iconset>
-     <normaloff>pics/print.png</normaloff>pics/print.png</iconset>
-   </property>
    <property name="text">
     <string>Print</string>
    </property>
@@ -555,37 +410,14 @@
  <tabstops>
   <tabstop>pushButton_cctv_on</tabstop>
   <tabstop>pushButton_cctv_off</tabstop>
-  <tabstop>checkBox_drone</tabstop>
-  <tabstop>checkBox_airplane</tabstop>
-  <tabstop>checkBox_helicopter</tabstop>
-  <tabstop>checkBox_military</tabstop>
-  <tabstop>checkBox_bird</tabstop>
-  <tabstop>checkBox_balloon</tabstop>
   <tabstop>pushButton_email</tabstop>
   <tabstop>pushButton_data</tabstop>
   <tabstop>pushButton_capture</tabstop>
   <tabstop>pushButton_save</tabstop>
-  <tabstop>horizontalSlider</tabstop>
   <tabstop>pushButton_exit</tabstop>
  </tabstops>
  <resources/>
  <connections>
-  <connection>
-   <sender>horizontalSlider</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>label_thres_value</receiver>
-   <slot>setNum(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>667</x>
-     <y>581</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>818</x>
-     <y>592</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>pushButton_exit</sender>
    <signal>clicked()</signal>
