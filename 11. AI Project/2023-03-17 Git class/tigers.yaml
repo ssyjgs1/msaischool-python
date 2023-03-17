@@ -4,4 +4,6 @@ members:
 - Linda
 - William
 - David
+- George
 
+# git commit -am "Add George to Tigers"
