@@ -63,5 +63,5 @@
 - Directory : [AI Project](/11.%20AI%20Project/)
 - The final AI project.
 - Our team made a "Hazardous Flying Object Detection System".
-- Our system is based on our ![classification project](/9.%20%EB%94%A5%EB%9F%AC%EB%8B%9D%20%ED%95%99%EC%8A%B5%EB%B0%A9%EB%B2%95%EB%A1%A0%20%EB%B0%8F%20%EC%8B%A4%EC%8A%B5%20%2B%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EB%B6%84%EB%A5%98%20%EB%AC%B8%EC%A0%9C%20%ED%95%B4%EA%B2%B0%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2023-01-10~12%20Team%20Mini%20Project/).
+- Our system is based on our [classification project](https://github.com/ssyjgs1/Dangerous-Flight-Classification-System).
 - Our final object detection system consists on `YOLOv8` + `MariaDB` + `PyQt5`.
