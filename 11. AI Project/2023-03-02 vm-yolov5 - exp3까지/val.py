@@ -339,8 +339,8 @@ def run(
 def parse_opt():
     parser = argparse.ArgumentParser()
     parser.add_argument('--data', type=str, default=ROOT / 'data/data.yaml', help='dataset.yaml path')
-    parser.add_argument('--weights', nargs='+', type=str, default=ROOT / 'runs/train/2023-02-23-1st2/weights/best.pt', help='model path(s)')
-    parser.add_argument('--batch-size', type=int, default=16, help='batch size')
+    parser.add_argument('--weights', nargs='+', type=str, default=ROOT / 'C:/Users/ssyjg/Documents/GitHub/best2.pt', help='model path(s)')
+    parser.add_argument('--batch-size', type=int, default=8, help='batch size')
     parser.add_argument('--imgsz', '--img', '--img-size', type=int, default=640, help='inference size (pixels)')
     parser.add_argument('--conf-thres', type=float, default=0.001, help='confidence threshold')
     parser.add_argument('--iou-thres', type=float, default=0.6, help='NMS IoU threshold')

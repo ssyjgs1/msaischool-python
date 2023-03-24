@@ -1,6 +1,6 @@
 # path : ./dataset/
 train : ./dataset/train/images
-val : ./dataset/train/images
+val : C:/Users/ssyjg/Documents/GitHub/MSAISchool-MainClass/11. AI Project/2023-02-23 vm-yolov5/dataset/valid/images
 
 
 # Classes
