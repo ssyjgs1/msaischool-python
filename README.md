@@ -1,7 +1,7 @@
 # Microsoft AI School Main Class
 
 ## Basic Information and Schedule
-- Microsoft AI School is Artificial Intelligence developer education course. After a 5 months programming education, I do team project in now.  
+- Microsoft AI School is Artificial Intelligence developer education course. After a 5 months programming education, I did team project.  
 - Period : 2022-09-30 ~ 2023-03-22
 - Curriculum : https://msaischool.kr/course | Official Homepage
     - Front-End, Python(+PyTorch and etc.) and AI, Machine Learning(+Deep Learning) and additional library, framework.
